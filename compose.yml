@@ -1,0 +1,10 @@
+version: "2"
+services:
+  nginx-frontend:
+    container_name: fanuc-demo
+    image: nginx:1.24-alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./build:/usr/share/nginx/html
+    ports:
+      - "8080:80"
