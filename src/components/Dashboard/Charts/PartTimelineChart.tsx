@@ -231,7 +231,7 @@ const PartTimelineChart: React.FC<PartTimelineChartProps> = ({
     const maxBarWidth = 180; // Maximum width of a bar in pixels
     const minBarWidth = 1200; // Minimum width of a bar in pixels
     const numBars = mergedData.length;
-    const chartContainerWidth = chartWidth -100; // Adjust this based on your chart's margins
+    const chartContainerWidth = chartWidth - 100; // Adjust this based on your chart's margins
 
     let barWidth = chartContainerWidth / numBars;
     barWidth = Math.max(Math.min(barWidth, maxBarWidth), minBarWidth);
@@ -267,7 +267,7 @@ const PartTimelineChart: React.FC<PartTimelineChartProps> = ({
         {...props}
         x={adjustedX}
         y={5}
-        width={adjustedWidth+3}
+        width={adjustedWidth + 3}
         height={30}
         fill={fill}
         // radius={radius}
@@ -299,11 +299,15 @@ const PartTimelineChart: React.FC<PartTimelineChartProps> = ({
 
   const tickInterval = 2; // interval in minutes
   // Assuming mergedData is sorted by time
-  const start = mergedData.length > 0 ? mergedData[0].observation.time : moment().valueOf();
-const end = mergedData.length > 0 ? mergedData[mergedData.length - 1].observation.time : moment().add(selectedHours, "hours").valueOf();
+  const start =
+    mergedData.length > 0 ? mergedData[0].observation.time : moment().valueOf();
+  const end =
+    mergedData.length > 0
+      ? mergedData[mergedData.length - 1].observation.time
+      : moment().add(selectedHours, "hours").valueOf();
 
-// Generate the tick values with the updated interval
-const tickValues = generateTickValues(start, end, tickInterval);
+  // Generate the tick values with the updated interval
+  const tickValues = generateTickValues(start, end, tickInterval);
 
   return (
     <div className="part-timeline-chart-container">
@@ -314,7 +318,7 @@ const tickValues = generateTickValues(start, end, tickInterval);
         </div>
       ) : (
         <>
-          <div style={{ width: chartWidth-8, height: "100%" }}>
+          <div style={{ width: chartWidth - 8, height: "100%" }}>
             <ResponsiveContainer width="100%" height={62}>
               <ComposedChart
                 barGap={0}
@@ -339,7 +343,7 @@ const tickValues = generateTickValues(start, end, tickInterval);
 
                 <Bar
                   dataKey="state.data.program.current.comment"
-                  shape={(props) => (
+                  shape={(props: any) => (
                     <CustomBarShape
                       {...props}
                       fill={
